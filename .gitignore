@@ -1,0 +1,47 @@
+# ===================================
+# Node & general
+# ===================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+.pnp.*
+.pnp.js
+
+# ===================================
+# Build outputs
+# ===================================
+.next/
+out/
+dist/
+build/
+
+# ===================================
+# Env files
+# ===================================
+.env
+.env.*      # en caso de que uses varias
+!.env.example
+.env.local  # ⚠️ aquí está tu endpoint de Google Apps Script, no subir
+
+# ===================================
+# IDE / Editor
+# ===================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*.DS_Store
+
+# ===================================
+# Test / coverage
+# ===================================
+coverage/
+*.lcov
+
+# ===================================
+# Misc
+# ===================================
+.vercel/
+*.log

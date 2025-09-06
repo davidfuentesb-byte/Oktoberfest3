@@ -1,0 +1,161 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================
+   TOKENS (CSS Variables)
+   ========================= */
+:root {
+  /* Colores de la paleta centralizada */
+  --brand:      #ffb703; /* Primario (ámbar) */
+  --brand-700:  #e07f00;
+  --brand-50:   #fff7e6;
+
+  --forest:     #14532d; /* Secundario (verde bosque) */
+  --cream:      #fff7e6; /* Fondo alterno suave */
+  --ink:        #111827; /* Texto base */
+
+  /* Radios / sombras */
+  --radius:      1rem;   /* coincide con rounded-2xl aprox */
+  --shadow-soft: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+/* =========================
+   BASE / TIPOGRAFÍA
+   ========================= */
+html, body {
+  @apply bg-white text-gray-900;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* =========================
+   LAYOUT HELPERS
+   ========================= */
+.container-default {
+  @apply mx-auto max-w-6xl px-4;
+}
+
+.section {
+  @apply py-12;
+  /* Si prefieres fondo alterno para TODAS las secciones, descomenta:
+     background-color: var(--cream);
+  */
+}
+.section-alt {
+  @apply py-12;
+  background-color: var(--cream);
+}
+
+/* Separador suave entre secciones (opcional) */
+.section + .section {
+  border-top: 1px solid rgba(17, 24, 39, 0.06); /* gris-900/6% */
+}
+.section-alt + .section,
+.section + .section-alt {
+  border-top: 1px solid rgba(17, 24, 39, 0.06);
+}
+
+/* =========================
+   TARJETAS (CARDS)
+   ========================= */
+.card {
+  @apply rounded-2xl border p-5 bg-white shadow-sm;
+  box-shadow: var(--shadow-soft);
+}
+
+/* Tarjeta destacada (mismo tamaño, color diferenciado) */
+.card-featured {
+  border-color: color-mix(in srgb, var(--brand) 35%, white);
+  background:   color-mix(in srgb, var(--brand) 10%, white);
+}
+
+/* =========================
+   LINKS / CTAs
+   ========================= */
+.link {
+  color: var(--brand-700);
+  text-underline-offset: 4px;
+}
+.link:hover { text-decoration: underline; }
+
+/* Botones base (responsivos y centralizados) */
+.btn-base {
+  @apply inline-flex items-center justify-center rounded-xl font-medium transition
+          focus:outline-none focus:ring-2 focus:ring-offset-2;
+  @apply px-3 py-1.5 text-xs
+         sm:px-4 sm:py-2 sm:text-sm
+         md:px-5 md:py-2.5 md:text-base;
+}
+
+/* Sólido (marca) */
+.btn-brand {
+  @apply btn-base text-white;
+  background-color: var(--brand);
+}
+.btn-brand:hover  { filter: brightness(0.95); }
+.btn-brand:active { filter: brightness(0.9);  }
+.btn-brand:focus  { --tw-ring-color: var(--brand); }
+
+/* Secundario (verde bosque) */
+.btn-secondary {
+  @apply btn-base text-white;
+  background-color: var(--forest);
+}
+.btn-secondary:hover  { filter: brightness(1.05); }
+.btn-secondary:active { filter: brightness(0.95); }
+.btn-secondary:focus  { --tw-ring-color: var(--forest); }
+
+/* Delineado (outline) con color de marca */
+.btn-ghost {
+  @apply btn-base border bg-white;
+  border-color: var(--brand);
+  color: var(--brand-700);
+}
+.btn-ghost:hover { background-color: var(--brand-50); }
+.btn-ghost:focus { --tw-ring-color: var(--brand); }
+
+/* Ajuste de tamaños extra compactos en móviles (opcional) */
+@media (max-width: 480px) {
+  .btn-brand, .btn-secondary, .btn-ghost { @apply text-[0.9rem] px-3 py-2; }
+}
+
+/* =========================
+   BADGES
+   ========================= */
+.badge {
+  @apply inline-flex items-center rounded-full border px-2 py-0.5 text-xs font-medium;
+  border-color: color-mix(in srgb, var(--forest) 40%, white);
+  color:       color-mix(in srgb, var(--forest) 85%, black);
+  background:  color-mix(in srgb, var(--forest) 10%, white);
+}
+
+/* =========================
+   UTILIDADES VARIAS
+   ========================= */
+/* Ocultar scrollbars de carruseles (fallback) */
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { scrollbar-width: none; }
+
+/* Sombreado útil para textos sobre imágenes (si lo necesitas)
+   .text-shadow { text-shadow: 0 2px 8px rgba(0,0,0,.35); }
+*/
+
+/* =========================
+   COMPONENTES QUE USAN TOKEN
+   (EJEMPLOS)
+   ========================= */
+/* LogoWall (si quieres centrar y controlar gap uniforme) */
+/* .logo-wall {
+  @apply grid gap-6;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+@media (max-width: 1024px) {
+  .logo-wall { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .logo-wall { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+*/
